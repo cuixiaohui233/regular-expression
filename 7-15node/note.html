@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则笔记</title>
+</head>
+<body>
+	
+	
+<script>
+
+	/*relpace : 作用：正则去匹配字符串，匹配成功的字符，被替换成新的字符
+			  写法：replace(正则，新的字符)
+			  返回值：string,返回替换完成的字符
+			  例：
+	*/
+					var str = 'aaa';
+					var re = /a+/g;
+
+					str = str.replace(re,'b');
+
+					console.log(str);
+				/*
+				
+				参数：(re,要替换的字符串||函数)
+						函数：function(str){
+							//函数的第一个参数：str，就是匹配成功的字符串也就是说是a+
+						}
+				正则里的|：代表或的意思
+				 */
+
+	/*
+	
+	匹配子项：小括号()
+	还有一个意思，就是分组操作，就是(1+1)*2
+	
+	把正则的整体叫做母亲
+	把正则里的第一个小括号叫做第一个子项
+	把第二个小括号叫做第二个子项
+	
+	函数里的第一个参数，就是正则的整体，第二个参数就是第一个子项，第三个参数就是第二个子项。。。
+	例：
+	
+	*/
+	var str = '2017-7-15';
+	var re = /(\d+)(-)/g;
+	str = str.replace(re,function(num,n1,n2){
+		//2017-7-15 -> 2017.7.15
+		return n1+'.'
+	})
+	console.log(str)
+</script>			  
+</body>
+</html>

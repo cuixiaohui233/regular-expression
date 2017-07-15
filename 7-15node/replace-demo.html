@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+</head>
+<body>
+	<input type="text" id="txt1"/>
+	<input type="text" id="txt2"/>
+	<input type="button" value="按钮" id="btn"/>
+	<script>
+	var txt1 = document.getElementById('txt1');
+	var txt2 = document.getElementById('txt2');
+	var btn = document.getElementById('btn');
+	var str = '我就是剩这么一点点倔，称得上我的优点';
+	var re = /就是|点|我的优/g;//正则规则
+	btn.onclick = function(){
+		txt2.value = txt1.value.replace(re,function(str){
+			var result = '';
+			for(var i=0;i<str.length;i++){
+				result += '*'
+			}
+			return result;
+		})
+	}
+	</script>
+</body>
+</html>
