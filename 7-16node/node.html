@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		正则表达式字符类：一组相似的元素
+		
+		1.任意字符：
+			[bde]:b||d||e
+			注意:[]号中的整体代表一个字符
+		
+		例1：
+		 */
+		var str = 'abc';
+		var re = /a[bde]c/;
+		console.log(re.test(str));//true
+		/*例2*/
+		var str = 'abdc';
+		var re1 = /a[bde]c/;
+		console.log(re1.test(str));//false 这里a对应a,中括号里的b或d,或e，对应b,c就对应d,所以是false，是一一对应的，[]号里的**是或者;
+		
+		/*
+		2.排除：
+			^  如果^写在[]里面，就代表排除的意思,就是要匹配的字符串不包含匹配项
+			例：
+		*/
+		var str = 'abc';
+		var re2 = /a[^bde]c/;
+		console.log(re2.test(str))//false 这里是除了bde都可以，然后第二位是b,所以是false
+		
+		/*
+		3.范围：
+			[]中匹配的范围是比较大的，例如26个英文字母，这时就可以用到范围，[a-z],[0-9],[A-Z]，[4-9],[0-9a-z]...都可以
+		*/
+		var str = 'a0cfA';
+		var re = /a[0-9][a-z]f[A-Z]/;
+		console.log(re.test(str));//true 这里的a对应a,范围[0-9]对应0，这里的0是可以换成其他数字的以此类推
+		
+		/*
+		 转义字符：
+		\d:任一数字字符
+
+　　		\D:任一非数字字符
+
+　　		\s:任一空白字符
+
+　　		\S:任一非空白字符
+
+　　		\w:任一字母字符
+
+　　		\W:任一非字母字符
+		
+		\b:独立的部分P（开始，结束，空格）
+		
+		\B:非独立的部分
+		
+		.:任意字符
+		
+		\.:才是真正的"."
+		*/
+	</script>
+</body>
+</html>

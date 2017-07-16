@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="text" />
+		<input type="button" value="按钮" />
+		<script type="text/javascript">
+			var inps= document.getElementsByTagName('input');
+			var re = /<[^>]+>/g;
+			inps[2].onclick = function(){
+				inps[1].value = inps[0].value.replace(re,'')
+			}
+		</script>
+	</body>
+</html>
