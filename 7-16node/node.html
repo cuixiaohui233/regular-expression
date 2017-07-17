@@ -5,6 +5,8 @@
 	<title>正则表达式</title>
 </head>
 <body>
+	<input type="text"/>
+	<input type="button"value="按钮" / >
 	<script type="text/javascript">
 		/*
 		正则表达式字符类：一组相似的元素
@@ -12,7 +14,11 @@
 		1.任意字符：
 			[bde]:b||d||e
 			注意:[]号中的整体代表一个字符
-		
+			
+			注意：
+			^:开头
+			$:结尾
+			^100$:加了这个之后，这个字符串会以一个整体来和正则比较，这时候，如果输入是1000，就是false了
 		例1：
 		 */
 		var str = 'abc';
@@ -22,23 +28,38 @@
 		var str = 'abdc';
 		var re1 = /a[bde]c/;
 		console.log(re1.test(str));//false 这里a对应a,中括号里的b或d,或e，对应b,c就对应d,所以是false，是一一对应的，[]号里的**是或者;
+		/*例题3* 16-101*/
+		var inps = document.getElementsByTagName('input');
+		inps[1].onclick = function(){
+			var val = inps[0].value;
+//			var re = /^(1[6-9])$|^([2-9][0-9])$|^(10[0-1])$/;//16-101
+			var re = /11|^([2-9][0-9])$|^(10[0-8])$/;//11-108
+//			console.log(re.test(val));
+			if(re.test(val)){
+				alert('可以注册');
+			}else{
+				alert('不可以注册')
+			}
+		}
+		/*
+		2.范围：
+			[]中匹配的范围是比较大的，例如26个英文字母，这时就可以用到范围，[a-z],[0-9],[A-Z]，[4-9],[0-9a-z]...都可以
+			中文的区间：[\u4e00-\u9fa5]
+		*/
+		var str = 'a0cfA';
+		var re = /a[0-9][a-z]f[A-Z]/;
+		console.log(re.test(str));//true 这里的a对应a,范围[0-9]对应0，这里的0是可以换成其他数字的以此类推
 		
 		/*
-		2.排除：
+		 
+		/*
+		3.排除：
 			^  如果^写在[]里面，就代表排除的意思,就是要匹配的字符串不包含匹配项
 			例：
 		*/
 		var str = 'abc';
 		var re2 = /a[^bde]c/;
 		console.log(re2.test(str))//false 这里是除了bde都可以，然后第二位是b,所以是false
-		
-		/*
-		3.范围：
-			[]中匹配的范围是比较大的，例如26个英文字母，这时就可以用到范围，[a-z],[0-9],[A-Z]，[4-9],[0-9a-z]...都可以
-		*/
-		var str = 'a0cfA';
-		var re = /a[0-9][a-z]f[A-Z]/;
-		console.log(re.test(str));//true 这里的a对应a,范围[0-9]对应0，这里的0是可以换成其他数字的以此类推
 		
 		/*
 		4.转义字符：
@@ -50,7 +71,7 @@
 
 　　		\S:任一非空白字符
 
-　　		\w:任一字母字符
+　　		\w:任一字母字符，字母||数字||下划线
 
 　　		\W:任一非字母字符
 		
@@ -61,7 +82,17 @@
 		.:任意字符
 		
 		\.:才是真正的"."
-		5.当正则需要传参的时候，必须要用new RegExp()的写法
+		
+		?:最少没有，最多不限
+		
+		+:最少一个，最多不限
+		在使用new RegExp()的时候，如果字符串中有转义符，需要用转义符转义：*/
+		var re = new RegExp('\\d+','gi');
+		console.log(re);
+		/*5.当正则需要传参的时候，必须要用new RegExp()的写法
+			var re = new RegExp(变量,'修饰符');
+			也可以:
+			var re = new RegExp(/正则/,'修饰符');//ES6中支持第一个参数为正则
 		*/
 	</script>
 </body>

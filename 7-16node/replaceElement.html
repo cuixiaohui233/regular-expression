@@ -8,9 +8,9 @@
 		<input type="button" value="按钮" />
 		<script type="text/javascript">
 			var inps= document.getElementsByTagName('input');
-			var re = /<[^>]+>/g;
+			var re = /<[^>]+>|\s+/g;
 			inps[2].onclick = function(){
-				inps[1].value = inps[0].value.replace(re,'')
+				inps[1].value = inps[0].value.replace(re,'');
 			}
 		</script>
 	</body>
