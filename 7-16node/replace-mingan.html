@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>敏感词</title>
+	</head>
+	<body>
+		<input type="text" id="txt1"/>
+		<input type="text" id="txt2"/>
+		<input type="button" value="按钮" id="btn"/>
+	<script>
+	var txt1 = document.getElementById('txt1');
+	var txt2 = document.getElementById('txt2');
+	var btn = document.getElementById('btn');
+	var str = '尼玛|妈的|傻逼|靠|垃圾';
+	var re = new RegExp(str,'g');
+	btn.onclick = function(){
+		txt2.value = txt1.value.replace(re,function(str){
+			switch(str){
+				case '尼玛':
+					return '$%*';
+				break;
+				case '妈的':
+					return '*&~';
+				break;
+				case '傻逼':
+					return '%$*';
+				break;
+				case '靠':
+					return '$#@';
+				break;
+				case '垃圾':
+					return '^%!';
+				break;
+			}
+		})		
+	}
+	</script>
+	</body>
+</html>
