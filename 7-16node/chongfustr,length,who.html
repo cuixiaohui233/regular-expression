@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var str = 'ajfjljljlksjkjjkljdfoeooeopepnvfejffiehwah';
+		var arr = str.split('').sort().join('');
+		console.log(arr);
+		var str1 = '';
+		var num = 0;
+		arr.replace(/(\w)\1+/g,function($0,$1){
+			if($0.length > num){
+				num = $0.length;
+				str1 = $1;
+			}
+		});
+		console.log('出现次数最多的是'+str1+'出现了'+num+'次');
+	</script>
+</body>
+</html>
