@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	var str = '我的名字叫{name}，我今年{age}岁！';
+	var data = {
+		name:'小丽',
+		age:18
+	}
+	var re = /{(\w+)}/g;
+//	console.log()
+	var v = str.replace(re,function($0,$1){
+		console.log($0);
+//		if($0 == '{name}'){
+//			return data.name;
+//		}else if($0 == '{age}'){
+//			return data.age;
+//		}
+		return data[$1]
+	})
+	console.log(v);
+</script>
+</body>
+</html>

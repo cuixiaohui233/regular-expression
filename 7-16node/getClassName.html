@@ -13,7 +13,7 @@
 		function getClass(parent,str){
 			var ele = document.getElementsByTagName('*');
 			var arr = [];
-			var re = new RegExp('\\b'+str+'\\b');
+			var re = new RegExp('\\b'+str+'\\b');//这里的\b是转义字符，然后在字符串中，这个时候我们就要在写一个\,来的到真正的\b
 			for(var i=0;i<ele.length;i++){
 				if(re.test(ele[i].className)){
 					arr.push(ele[i]);
