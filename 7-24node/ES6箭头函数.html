@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>6217991000017928289
+	<script type="text/javascript">
+		/*
+			箭头函数：
+				var fn = (形参1,形参2,...)=>{//如果有多个形参或者没有形参时必须加括号
+					
+				}
+				
+				var fn = 形参 =>{//只有一个形参是可以省略括号
+					
+				}
+				
+				var fn = () => 返回的值 //相当于return
+				
+				箭头函数的this默认永远指向定义的父级。
+		
+				注意：
+					事件绑定函数不用使用箭头函数
+				
+				例：
+		*/
+			document.onclick = fn2;
+			function fn2(){
+				
+				alert(this);//document
+				
+				var fn = () => alert(this);//document
+				
+				function fn3(){
+					alert(this);//window
+					fn();
+				}
+				
+				fn3();
+			}; 
+			
+			
+			//this指向的是window
+		//	document.onclick = () => {
+		//		
+		//		alert(this);
+		//		
+		//	}
+	</script>	
+</body>
+</html>
